@@ -342,7 +342,7 @@ def price_trace(request):
 
             url = 'https://www.taobao.com/'
             try:
-                new_driver = webdriver.PhantomJS()
+                new_driver = webdriver.PhantomJS('/usr/lib/phantomjs/phantomjs')
                 new_driver.set_window_size(1366, 768)
                 try:
                     print >> f, u'模拟登录淘宝网'.encode('utf-8')

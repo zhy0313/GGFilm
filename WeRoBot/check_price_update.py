@@ -86,7 +86,7 @@ if __name__ == '__main__':
     changed_list = []
 
     try:
-        driver = webdriver.PhantomJS()
+        driver = webdriver.PhantomJS('/usr/lib/phantomjs/phantomjs')
         driver.set_window_size(1366, 768)
     except WebDriverException, error:
         print >> f, error
