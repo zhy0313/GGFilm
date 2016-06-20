@@ -1,0 +1,52 @@
+.log-area {
+    margin-top: 70px;
+    text-align: center;
+}
+
+.log-area h3 {
+    margin: 0;
+    padding: 0;
+    font-family: "LiSu";
+}
+
+.tabs .horizontal {
+    margin-top: 10px;
+    padding: 0;
+    height: 40px;
+    list-style: none;
+}
+
+.tabs .horizontal li {
+    display: inline-block;
+    float: left;
+    min-width: 50%;
+    text-align: center;
+}
+
+.tabs .horizontal li a {
+    display: block;
+    width: 100%;
+    line-height: 36px;
+    text-decoration: none;
+    font-size: 18px;
+    font-family: "Time New Roman";
+    color: #000000;
+}
+
+.tabs .horizontal .enabled-li {
+    background-color: #000000;
+}
+
+.tabs .horizontal .enabled-li .enabled {
+    color: #ffffff;
+}
+
+.input-area {
+    padding-top: 40px;
+    text-align: center;
+}
+
+.button-area {
+    padding-top: 20px;
+    text-align: right;
+}

@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block tilte %}
+{% endblock %}
+
+{% block extracss %}
+{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="col-sm-12 col-xs-12">
+            <div class="gap"></div>
+            <a href="javascript:void(0)" class="weui_btn weui_btn_primary update_print"
+               style="text-decoration: none;">下载Films</a>
+            <a href="javascript:void(0)" class="weui_btn weui_btn_primary update_notes"
+               style="text-decoration: none;">下载Notes</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block script_files %}
+{% endblock %}
+
+{% block script %}
+    $(document).ready(function(){
+        $(".update_print").click(function(){
+            $.ajax({
+		        url: "/update/print",
+                type: "GET",
+		        dataType: "text",
+		        data: {},
+
+                success: function(data){
+                    $.dialog({
+                        title: "管理员操作",
+                        content: data,
+                    });
+                },
+
+                complete: function(){
+                },
+
+                error: function(){
+                    $.dialog({
+                        title: "管理员操作",
+                        content: "更新数据库出错",
+                    });
+                },
+		    });
+        });
+
+        $(".update_notes").click(function(){
+            $.ajax({
+		        url: "/update/notes",
+                type: "GET",
+		        dataType: "text",
+		        data: {},
+
+                success: function(data){
+                    $.dialog({
+                        title: "管理员操作",
+                        content: data,
+                    });
+                },
+
+                complete: function(){
+                },
+
+                error: function(){
+                    $.dialog({
+                        title: "管理员操作",
+                        content: "更新数据库出错",
+                    });
+                },
+		    });
+        });
+    });
+{% endblock %}

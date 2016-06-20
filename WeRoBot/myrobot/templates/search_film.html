@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block tilte %}
+{% endblock %}
+
+{% block extracss %}
+<link href="{% static 'css/search_film.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="col-sm-12 col-xs-12">
+            <div class='tabs tabs_active'>
+                <ul class='horizontal'>
+                    <li class="li-1 enabled-li"><a href="#tab-1" class="show-change 35mm enabled">135</a></li>
+                    <li class="li-2"><a href="#tab-2" class="show-change 120">120</a></li>
+                    <li class="li-3"><a href="#tab-3" class="show-change Sheet">页片</a></li>
+                </ul>
+                <div class="tab-content" id='tab-1'>
+                    <h4>总共有{{ display_35mm_counts }}个可选胶片</h4>
+                    {% for film_35mm in display_35mm %}
+                    <div class="_35mm_film">
+                        <a href="javascript:void(0)" class="film_link">{{ film_35mm }}</a>
+                    </div>
+                    {% endfor %}
+                </div>
+                <div class="tab-content" id='tab-2'>
+                    <h4>总共有{{ display_120_counts }}个可选胶片</h4>
+                    {% for film_120 in display_120 %}
+                    <div class="_120_film">
+                        <a href="javascript:void(0)" class="film_link">{{ film_120 }}</a>
+                    </div>
+                    {% endfor %}
+                </div>
+                <div class="tab-content" id='tab-3'>
+                    <h4>总共有{{ display_sheet_counts }}个可选胶片</h4>
+                    {% for film_sheet in display_sheet %}
+                    <div class="sheet_film">
+                        <a href="javascript:void(0)" class="film_link">{{ film_sheet }}</a>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <br />
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block script_files %}
+<script src="/static/js/jquery.tabslet.min.js"></script>
+{% endblock %}
+
+{% block script %}
+    $(document).ready(function(){
+        $('.tabs').tabslet();
+
+        $('.35mm').click(function(){
+            $('.enabled').parent().removeClass("enabled-li");
+            $('.enabled').removeClass("enabled");
+
+            $('.li-1').addClass("enabled-li");
+            $('.li-1 a').addClass("enabled");
+        });
+
+        $('.120').click(function(){
+            $('.enabled').parent().removeClass("enabled-li");
+            $('.enabled').removeClass("enabled");
+
+            $('.li-2').addClass("enabled-li");
+            $('.li-2 a').addClass("enabled");
+        });
+
+        $('.Sheet').click(function(){
+            $('.enabled').parent().removeClass("enabled-li");
+            $('.enabled').removeClass("enabled");
+
+            $('.li-3').addClass("enabled-li");
+            $('.li-3 a').addClass("enabled");
+        });
+
+        $('.film_link').click(function(){
+            source = $('.enabled').html();
+            film = $(this).html().replace(/\+/g, '^');
+            window.location.href = "http://www.fotolei.cn/search/developer?source="+source+"&film="+film;
+            <!--$.confirm({-->
+                <!--title: '用户操作',-->
+                <!--content: '您确定要选择'+ film +'吗？',-->
+                <!--confirmButton: '确定',-->
+                <!--confirmButtonClass: 'btn-success',-->
+                <!--cancelButton: '取消',-->
+                <!--cancelButtonClass: 'btn-success',-->
+                <!--confirm: function(){-->
+                    <!--window.location.href = "http://www.fotolei.cn/search/developer?source="+source+"&film="+film;-->
+                <!--},-->
+                <!--cancel: function(){-->
+                <!--},-->
+            <!--});-->
+        });
+    });
+{% endblock %}

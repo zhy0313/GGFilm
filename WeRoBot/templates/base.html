@@ -1,0 +1,22 @@
+<!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.0//EN" "http://www.wapforum.org/DTD/xhtml-mobile10.dtd">
+<html>
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />    
+    <title>{% block title %}{% endblock %}</title>
+    {% block extracss %}{% endblock %}
+	<link rel="stylesheet" href="/static/bootstrap-3.3.5/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/static/jquery-confirm.js/jquery-confirm.css" />
+    <link rel="stylesheet" href="/static/css/weui.min.css" />
+
+	<script src="/static/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+	<script src="/static/js/jquery-1.12.3.min.js"></script>
+    <script src="/static/jquery-confirm.js/jquery-confirm.js"></script>
+</head>
+<body>
+{% block body %}{% endblock %}
+</body>
+{% block script_files %}{% endblock %}
+<script>
+{% block script %}{% endblock %}
+</script>
+</html>

@@ -1,0 +1,62 @@
+.tabs .horizontal {
+    margin-top: 10px;
+    padding: 0;
+    height: 40px;
+    list-style: none;
+}
+
+.tabs .horizontal li {
+    display: inline-block;
+    float: left;
+    min-width: 33.33%;
+    text-align: center;
+    border: 1px solid #000000;
+}
+
+.tabs .horizontal li a {
+    display: block;
+    width: 100%;
+    line-height: 36px;
+    text-decoration: none;
+    font-size: 18px;
+    font-family: "Time New Roman";
+    color: #000000;
+}
+
+.tabs .horizontal .enabled-li {
+    background-color: #000000;
+}
+
+.tabs .horizontal .enabled-li .enabled {
+    color: #ffffff;
+}
+
+.tabs .tab-content {
+    border: 2px solid #000000;
+}
+
+.tabs .tab-content h4 {
+    margin: 0;
+    padding: 0;
+    line-height: 32px;
+    background-color: #000000;
+    text-align: center;
+    font-size: 17px;
+    font-family: "Time New Roman";
+    color: #ffffff;
+}
+
+.tabs .tab-content ._35mm_film, .tabs .tab-content ._120_film, .tabs .tab-content .sheet_film {
+    border: 1px solid #cccccc;
+}
+
+.tabs .tab-content a {
+    display: block;
+    width: 100%;
+    padding-left: 10px;
+    line-height: 40px;
+    text-decoration: none;
+    font-size: 16px;
+    font-family: "Time New Roman";
+    color: #000000;
+}

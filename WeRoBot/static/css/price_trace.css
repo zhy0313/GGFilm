@@ -1,0 +1,76 @@
+.row1 {
+    margin-top: 40px;
+    background-color: RGB(255, 251, 240);
+}
+
+.row1 .col {
+    /*
+    border: 1px #000000 solid;
+    */
+    height: 100px;
+}
+
+.row1 .tb-log-area {
+    text-align: right;
+}
+
+.row1 .search-area input {
+    margin-top: 18px;
+    height: 40px;
+    font-size: 20px;
+    border: 3px #F52B00 solid;
+}
+
+.row1 .search-area button {
+    margin-bottom: 4px;
+    height: 40px;
+    background-color: #F52B00;
+    font-size: 20px;
+    color: #FFFFFF;
+}
+
+.row2 {
+    margin-top: 20px;
+}
+
+.row2 .col {
+    /*
+    border: 1px #F52B00 solid;
+    */
+    height: 200px;
+}
+
+.row2 .item-pic {
+    text-align: center;
+}
+
+.row2 .item-pic img {
+    max-width: 180px;
+    max-height: 180px;
+}
+
+.row2 .item-info {
+    font-family: "Times New Roman";
+}
+
+.row2 .item-info ul {
+    list-style: none;
+}
+
+.row2 .select-area {
+    padding-top: 2px;
+    text-align: center;
+}
+
+.row2 .select-area a{
+    font-size: 30px;
+    color: #000000;
+}
+
+.row2 .select-area a:hover {
+    color: #F52B00;
+}
+
+.row3 .footer {
+    height: 100px;
+}

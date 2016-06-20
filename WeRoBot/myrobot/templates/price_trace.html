@@ -1,0 +1,191 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block tilte %}
+{% endblock %}
+
+{% block extracss %}
+<link href="{% static 'css/price_trace.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+    <div class="row-fluid row1">
+        <div class="col-md-2 col-sm-2 col-xs-2 col">
+        </div>
+        <div class="col-md-2 col-sm-2 col-xs-2 col">
+            <div class="tb-log-area">
+                <img src="/static/images/tb_log.webp" />
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-6 col">
+            <div class="search-area">
+                <input type="text" name="inputKeywords" class="input-keywords" placeholder="输入搜索词" size="40"/>
+                <button class="btn search-button">搜索</button>
+            </div>
+        </div>
+        <div class="col-md-2 col-sm-2 col-xs-2 col">
+        </div>
+    </div>
+    {% for item in item_list %}
+    <div class="row-fluid row2">
+        <div class="col-md-2 col-sm-2 col-xs-2 col">
+            <div class="item-link" style="display: none;">
+                {{ item.ItemLink }}
+            </div>
+        </div>
+        <div class="col-md-2 col-sm-2 col-xs-2 col">
+            <div class="item-pic">
+                <img src="/media/pic/{{ item.ItemPicId }}.webp" />
+            </div>
+        </div>
+        <div class="col-md-5 col-sm-5 col-xs-5 col">
+            <div class="item-info">
+                <h4 class="title">{{ item.ItemTitle }}</h4>
+                <ul>
+                    <li class="shop-name"><strong>店铺：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>
+                        {{ item.ItemShopName }}</li>
+                    <li class="location"><strong>来源地：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>
+                        {{ item.ItemLocation }}</li>
+                    <li class="price"><strong>价格：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>
+                        ￥{{ item.ItemPrice }}</li>
+                    {% if item.ItemTaoBaoPrice == ''%}
+                    <li class="taobao-price"><strong>淘宝价：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>
+                        无</li>
+                    {% else %}
+                    <li class="taobao-price"><strong>淘宝价：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>
+                        ￥{{ item.ItemTaoBaoPrice }}</li>
+                    {% endif %}
+                    <li class="deal"><strong>付款人数：&nbsp;</strong>
+                        {{ item.ItemDeal }}</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-3 col-xs-3 col">
+            <div class="select-area">
+                {% if item.Has_Been_Selected %}
+                    <h5 class="if-has-been-added">已加入价格跟踪队列</h5>
+                {% else %}
+                    <h5 class="if-has-been-added">是否加入价格跟踪队列？</h5>
+                {% endif %}
+                <br/><br/>
+                <a href="javascript:void(0)" class="add-item"><span class="glyphicon glyphicon-ok"></span></a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    <div class="row-fluid row3">
+        <div class="footer">
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block script_files %}
+{% endblock %}
+
+{% block script %}
+    $(document).ready(function(){
+        $(".search-button").click(function(){
+            var keywords = $(".input-keywords").val();
+            $.ajax({
+                url : "/price-trace",
+                type : "GET",
+                dataType : "text",
+                data : {inputKeywords: keywords, type: 1},
+
+                success: function(data){
+                    window.location.href = "http://www.fotolei.cn/price-trace";
+                },
+
+                complete: function(){
+                },
+
+                error: function(){
+                    $.alert({
+                        title: "提示",
+                        content: "服务器发生错误!",
+                        confirmButton: "知道了",
+                        confirmButtonClass: "btn-success",
+                    });
+                },
+            });
+        });
+
+        $(".add-item").click(function(){
+            String.prototype.trim=function() {
+                return this.replace(/(^\s*)|(\s*$)/g,'');
+            }
+
+            var current_this = $(this);
+            var item_link = current_this.parent().parent().prev().prev().prev().find(".item-link").html().trim();
+            var item_title = current_this.parent().parent().prev().find(".title").html().trim();
+            var item_shopname = current_this.parent().parent().prev().find(".shop-name").html().split("</strong>")[1].trim();
+            var item_price = current_this.parent().parent().prev().find(".price").html().split("￥")[1].trim();
+            var item_taobao_price = current_this.parent().parent().prev().find(".taobao-price").html().split("</strong>")[1].trim();
+            if (item_taobao_price == "无") {
+                item_taobao_price = "";
+            }
+            else {
+                item_taobao_price = item_taobao_price.split("￥")[1];
+            }
+
+            function getCookie(name) {
+                var cookieValue = null;
+                if (document.cookie && document.cookie != '') {
+                    var cookies = document.cookie.split(';');
+                    for (var i = 0; i < cookies.length; i++) {
+                        var cookie = jQuery.trim(cookies[i]);
+                        // Does this cookie string begin with the name we want?
+                        if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                            break;
+                        }
+                    }
+                }
+                return cookieValue;
+            }
+            var csrftoken = getCookie('csrftoken');
+
+            function csrfSafeMethod(method) {
+                // these HTTP methods do not require CSRF protection
+                return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+            }
+            $.ajaxSetup({
+                beforeSend: function(xhr, settings) {
+                    if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                        xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                    }
+                }
+            });
+
+            $.ajax({
+                url : "/price-trace",
+                type : "POST",
+                dataType : "text",
+                data : {item_link: item_link,
+                        item_title: item_title,
+                        item_shopname: item_shopname,
+                        item_price: item_price,
+                        item_taobao_price: item_taobao_price,
+                        type: 2},
+
+                success: function(data){
+                    current_this.parent().find('h5').html("已加入价格跟踪队列");
+                },
+
+                complete: function(){
+                },
+
+                error: function(){
+                    $.alert({
+                        title: "提示",
+                        content: "服务器发生错误!",
+                        confirmButton: "知道了",
+                        confirmButtonClass: "btn-success",
+                    });
+                },
+            });
+        });
+    });
+{% endblock %}

@@ -1,0 +1,35 @@
+.selector .nav h4 {
+    font-size: 17px;
+    font-family: "Time New Roman";
+    color: #000000;
+}
+
+.selector .selector-area {
+    border: 2px solid #000000;
+}
+
+.selector .selector-area h4 {
+    margin: 0;
+    padding: 0;
+    line-height: 32px;
+    background-color: #000000;
+    text-align: center;
+    font-size: 17px;
+    font-family: "Time New Roman";
+    color: #ffffff;
+}
+
+.selector .selector-area .selector-element {
+    border: 1px solid #cccccc;
+}
+
+.selector .selector-area a {
+    display: block;
+    width: 100%;
+    padding-left: 10px;
+    line-height: 40px;
+    text-decoration: none;
+    font-size: 16px;
+    font-family: "Time New Roman";
+    color: #000000;
+}

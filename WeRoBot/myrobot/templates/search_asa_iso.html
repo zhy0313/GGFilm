@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block tilte %}
+{% endblock %}
+
+{% block extracss %}
+<link href="{% static 'css/search_developer.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="col-sm-12 col-xs-12">
+            <div class="selector">
+                <div class="nav">
+                    <h4 class="navigation">{{ nav.source }}>{{ nav.film }}>{{ nav.developer }}>{{ nav.dilution }}></h4>
+                </div>
+                <div class="selector-area">
+                    <h4>总共有{{ display_asa_iso_counts }}个可选ISO感光度</h4>
+                    {% for asa_iso in display_asa_iso %}
+                    <div class="selector-element">
+                        <a href="javascript:void(0)" class="element_link">{{ asa_iso }}</a>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <br />
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block script_files %}
+{% endblock %}
+
+{% block script %}
+    $(document).ready(function(){
+        $('.element_link').click(function(){
+            source = $('.navigation').html().split('&\gt;')[0];
+            film = $('.navigation').html().split('&\gt;')[1].replace(/\+/g, '^');
+            developer = $('.navigation').html().split('&\gt;')[2].replace(/\+/g, '^');
+            dilution = $('.navigation').html().split('&\gt;')[3].replace(/\+/g, '^');
+            asa_iso = $(this).html().replace(/\+/g, '^');
+            asa_iso_display = $(this).html();
+            window.location.href = "http://www.fotolei.cn/search/result?source="+source+"&film="+film+"&developer="+developer+"&dilution="+dilution+"&asa_iso="+asa_iso;
+            <!--$.confirm({-->
+                <!--title: '用户操作',-->
+                <!--content: '您确定要选择'+ asa_iso_display +'吗？',-->
+                <!--confirmButton: '确定',-->
+                <!--confirmButtonClass: 'btn-success',-->
+                <!--cancelButton: '取消',-->
+                <!--cancelButtonClass: 'btn-success',-->
+                <!--confirm: function(){-->
+                    <!--window.location.href = "http://www.fotolei.cn/search/result?source="+source+"&film="+film+"&developer="+developer+"&dilution="+dilution+"&asa_iso="+asa_iso;-->
+                <!--},-->
+                <!--cancel: function(){-->
+                <!--},-->
+            <!--});-->
+        });
+    });
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block tilte %}
+{% endblock %}
+
+{% block extracss %}
+<link href="{% static 'css/search_result.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="result-wrapper">
+            <ul>
+                <li>
+                    {{ time }}分钟，温度为{{ temperature }}&#8451;
+                </li>
+                <li>
+                    默认前1分钟搅动，后续每一分钟搅动10秒，如有特殊备注，以备注为准。
+                </li>
+                {% if has_note %}
+                <li>
+                    {% for note in note_list %}
+                    {{ note }}
+                    {% endfor %}
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+        <div class="button-wrapper">
+            <a href="/search"><button class="btn btn-default">继续查询</button></a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block script_files %}
+{% endblock %}
+
+{% block script %}
+    $(document).ready(function(){
+    });
+{% endblock %}

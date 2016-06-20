@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block tilte %}
+{% endblock %}
+
+{% block extracss %}
+<link href="{% static 'css/search_developer.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="col-sm-12 col-xs-12">
+            <div class="selector">
+                <div class="nav">
+                    <h4 class="navigation">{{ nav.source }}>{{ nav.film }}></h4>
+                </div>
+                <div class="selector-area">
+                    <h4>总共有{{ display_developer_counts }}个可选显影液</h4>
+                    {% for developer in display_developer %}
+                    <div class="selector-element">
+                        <a href="javascript:void(0)" class="element_link" style="display: block; width: 100%;">{{ developer }}</a>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <br />
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block script_files %}
+{% endblock %}
+
+{% block script %}
+    $(document).ready(function(){
+        $('.element_link').click(function(){
+            source = $('.navigation').html().split('&\gt;')[0];
+            film = $('.navigation').html().split('&\gt;')[1].replace(/\+/g, '^');
+            developer = $(this).html().replace(/\+/g, '^');
+            window.location.href = "http://www.fotolei.cn/search/dilution?source="+source+"&film="+film+"&developer="+developer;
+            <!--$.confirm({-->
+                <!--title: '用户操作',-->
+                <!--content: '您确定要选择'+ developer +'吗？',-->
+                <!--confirmButton: '确定',-->
+                <!--confirmButtonClass: 'btn-success',-->
+                <!--cancelButton: '取消',-->
+                <!--cancelButtonClass: 'btn-success',-->
+                <!--confirm: function(){-->
+                    <!--window.location.href = "http://www.fotolei.cn/search/dilution?source="+source+"&film="+film+"&developer="+developer;-->
+                <!--},-->
+                <!--cancel: function(){-->
+                <!--},-->
+            <!--});-->
+        });
+    });
+{% endblock %}
