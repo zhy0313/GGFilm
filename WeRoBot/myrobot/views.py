@@ -431,15 +431,19 @@ def price_trace(request):
                             f.close()
                             new_driver.close()
                         except NoSuchElementException, e:
+                            f.close()
                             new_driver.close()
                             print >> f, e
                     except NoSuchElementException, e:
+                        f.close()
                         new_driver.close()
                         print >> f, e
                 except TimeoutException, e:
+                    f.close()
                     new_driver.close()
                     print >> f, e
             except WebDriverException, e:
+                f.close()
                 print >> f, e
             return HttpResponse()
     if request.is_ajax() and request.method == "POST":
