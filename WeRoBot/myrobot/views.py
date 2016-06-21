@@ -346,9 +346,9 @@ def price_trace(request):
                 new_driver.set_window_size(1366, 768)
                 try:
                     print >> f, u'模拟登录淘宝网'.encode('utf-8')
-                    new_driver.get(url)
                     f.close()
                     new_driver.close()
+                    # new_driver.get(url)
                     # try:
                     #     search_combobox = WebDriverWait(new_driver, 10).until(
                     #         EC.presence_of_element_located((By.CLASS_NAME, 'search-combobox-input-wrap'))
