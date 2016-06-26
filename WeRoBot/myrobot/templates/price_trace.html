@@ -39,7 +39,7 @@
                 <img src="/media/pic/{{ item.ItemPicId }}.webp" />
             </div>
         </div>
-        <div class="col-md-5 col-sm-5 col-xs-5 col">
+        <div class="col-md-6 col-sm-6 col-xs-6 col">
             <div class="item-info">
                 <h4 class="title">{{ item.ItemTitle }}</h4>
                 <ul>
@@ -61,7 +61,7 @@
                 </ul>
             </div>
         </div>
-        <div class="col-md-3 col-sm-3 col-xs-3 col">
+        <div class="col-md-2 col-sm-2 col-xs-2 col">
             <div class="select-area">
                 {% if item.Has_Been_Selected %}
                     <h5 class="if-has-been-added">已加入价格跟踪队列</h5>
@@ -95,7 +95,7 @@
                 data : {inputKeywords: keywords, type: 1},
 
                 success: function(data){
-                    window.location.href = "http://www.fotolei.cn/price-trace";
+                    window.location.href = "http://127.0.0.1:8000/price-trace";
                 },
 
                 complete: function(){

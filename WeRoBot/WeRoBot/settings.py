@@ -24,7 +24,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'nl&+-7!ib!jr*d8!--4cw^xytu=$b8supijk4ou1z9z^k9por*'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['.fotolei.cn', '127.0.0.1', '0.0.0.0']
 
@@ -106,11 +106,11 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 # Production Mode
-STATIC_ROOT = os.path.join(BASE_DIR, 'static').replace('\\', '/')
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static').replace('\\', '/')
 # Development Mode
-# STATICFILES_DIRS = (
-#     os.path.join(BASE_DIR, 'static').replace('\\', '/'),
-# )
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static').replace('\\', '/'),
+)
 
 
 # Media files

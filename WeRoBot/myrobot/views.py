@@ -313,17 +313,40 @@ def remove_pics(fp):
         print >> fp, u'图片删除完毕'.encode('utf-8')
 
 
-def find_out_real_price(shop_url, match_price):
-    html = urllib2.urlopen(shop_url).read()
-    soup = BeautifulSoup(html, 'lxml', from_encoding='utf-8')
-    title = soup.find(name='h3', attrs={'class': 'tb-main-title'})['data-title'].strip()
-    price = soup.find(name='li', attrs={'id': 'J_StrPriceModBox'}). \
-        find(name='em', attrs={'class': 'tb-rmb-num'}).get_text().strip()
-    if match_price != price:
-        taobao_price = match_price
-    else:
-        taobao_price = ''
-    return title, price, taobao_price
+def find_out_real_price(ff, i, shop_url, match_price):
+    print >> ff, shop_url
+    title, price, taobao_price = '', '', ''
+    try:
+        html = urllib2.urlopen(shop_url).read()
+        print >> ff, u'第{0}家店铺的商品页面读取成功...'.format(i).encode('utf-8')
+        soup = BeautifulSoup(html, 'lxml', from_encoding='utf-8')
+        try:
+            title = soup.find(name='h3', attrs={'class': 'tb-main-title'})['data-title'].strip()
+        except TypeError, e:
+            title = soup.find(name='div', attrs={'class': 'tb-detail-hd'}).find(name='h1').get_text().strip()
+        finally:
+            try:
+                price = soup.find(name='li', attrs={'id': 'J_StrPriceModBox'}). \
+                    find(name='em', attrs={'class': 'tb-rmb-num'}).get_text().strip()
+                if match_price != price:
+                    taobao_price = match_price
+            except Exception, e:
+                driver = webdriver.PhantomJS()
+                driver.set_window_size(800, 400)
+                driver.get(shop_url)
+                tm_fcs_panel = WebDriverWait(driver, 10).until(
+                    EC.presence_of_element_located((By.CLASS_NAME, 'tm-fcs-panel'))
+                )
+                price = WebDriverWait(tm_fcs_panel, 10).until(
+                    EC.presence_of_element_located((By.TAG_NAME, 'span'))
+                ).text
+                driver.close()
+                if match_price != price:
+                    taobao_price = match_price
+    except urllib2.HTTPError, e:
+        print >> ff, u'第{0}家店铺的商品页面读取失败...'.format(i).encode('utf-8')
+    finally:
+        return title, price, taobao_price
 
 
 def price_trace(request):
@@ -338,115 +361,139 @@ def price_trace(request):
             print >> f, '******************************'
             print >> f, '     ' + get_current_time()
             print >> f, '******************************'
-            # remove_pics(f)
+            remove_pics(f)
 
             url = 'https://www.taobao.com/'
             try:
-                new_driver = webdriver.PhantomJS('/usr/lib/phantomjs/phantomjs')
-                new_driver.set_window_size(1366, 768)
+                new_driver = webdriver.PhantomJS()
+                new_driver.set_window_size(800, 400)
                 try:
                     print >> f, u'模拟登录淘宝网'.encode('utf-8')
-                    f.close()
-                    new_driver.close()
-                    # new_driver.get(url)
-                    # try:
-                    #     search_combobox = WebDriverWait(new_driver, 10).until(
-                    #         EC.presence_of_element_located((By.CLASS_NAME, 'search-combobox-input-wrap'))
-                    #     )
-                    #     search_input = WebDriverWait(search_combobox, 10).until(
-                    #         EC.presence_of_element_located((By.ID, 'q'))
-                    #     )
-                    #
-                    #     # 发送搜索词
-                    #     search_input.send_keys(keywords)
-                    #
-                    #     search_button_wrap = WebDriverWait(new_driver, 10).until(
-                    #         EC.presence_of_element_located((By.CLASS_NAME, 'search-button'))
-                    #     )
-                    #     search_button = WebDriverWait(search_button_wrap, 10).until(
-                    #         EC.presence_of_element_located((By.CLASS_NAME, 'btn-search'))
-                    #     )
-                    #     search_button.click()
-                    #     try:
-                    #         print >> f, u'搜索成功，正在返回搜索结果...'.encode('utf-8')
-                    #         main_srp_item_list = WebDriverWait(new_driver, 10).until(
-                    #             EC.presence_of_element_located((By.ID, 'mainsrp-itemlist'))
-                    #         )
-                    #         m_item_list = WebDriverWait(main_srp_item_list, 10).until(
-                    #             EC.presence_of_element_located((By.CLASS_NAME, 'm-itemlist'))
-                    #         )
-                    #         items = WebDriverWait(m_item_list, 10).until(
-                    #             EC.presence_of_all_elements_located((By.CLASS_NAME, 'items'))
-                    #         )[0]
-                    #         all_items = WebDriverWait(items, 10).until(
-                    #             EC.presence_of_all_elements_located((By.CLASS_NAME, 'item'))
-                    #         )
-                    #         total_items = len(all_items)
-                    #         print >> f, u'总共返回{0}个搜索结果'.format(total_items).encode('utf-8')
-                    #
-                    #         # 抓取商品图
-                    #         for (j, item) in enumerate(all_items):
-                    #             print >> f, u'正在爬取第{0}家店铺的数据...'.format(j + 1).encode('utf-8')
-                    #             item_pic = WebDriverWait(item, 10).until(
-                    #                 EC.presence_of_element_located((By.CLASS_NAME, 'J_ItemPic'))
-                    #             )
-                    #             item_pic_src = item_pic.get_attribute('src')
-                    #             item_pic_id = item_pic.get_attribute('id')
-                    #             try:
-                    #                 im = Image.open(StringIO(requests.get(item_pic_src, timeout=5).content))
-                    #                 if im.mode != 'RGB':
-                    #                     im = im.convert('RGB')
-                    #                 try:
-                    #                     im.save('media/pic/{0}.webp'.format(item_pic_id))
-                    #                 except IOError, e:
-                    #                     print >> f, e
-                    #             except requests.Timeout, e:
-                    #                 print >> f, e
-                    #             item_price_and_link = WebDriverWait(item, 10).until(
-                    #                 EC.presence_of_element_located((By.CLASS_NAME, 'J_ClickStat'))
-                    #             )
-                    #             item_match_price = item_price_and_link.get_attribute('trace-price')
-                    #             item_link = item_price_and_link.get_attribute('href')
-                    #             item_title, item_price, item_taobao_price = find_out_real_price(item_link, item_match_price)
-                    #
-                    #             item_deal = WebDriverWait(item, 10).until(
-                    #                 EC.presence_of_element_located((By.CLASS_NAME, 'deal-cnt'))
-                    #             ).text
-                    #
-                    #             row_3 = WebDriverWait(item, 10).until(
-                    #                 EC.presence_of_element_located((By.CLASS_NAME, 'row-3'))
-                    #             )
-                    #             item_shop_name = WebDriverWait(row_3, 10).until(
-                    #                 EC.presence_of_all_elements_located((By.TAG_NAME, 'span'))
-                    #             )[4].text
-                    #
-                    #             item_location = WebDriverWait(item, 10).until(
-                    #                 EC.presence_of_element_located((By.CLASS_NAME, 'location'))
-                    #             ).text
-                    #             # 存储数据
-                    #             obj = TempItemStorage(ItemLink=item_link, ItemPicId=item_pic_id,
-                    #                                   ItemTitle=item_title, ItemShopName=item_shop_name,
-                    #                                   ItemLocation=item_location, ItemPrice=item_price,
-                    #                                   ItemTaoBaoPrice=item_taobao_price, ItemDeal=item_deal)
-                    #             obj.save()
-                    #         print >> f, u'数据爬取完毕'.encode('utf-8')
-                    #         f.close()
-                    #         new_driver.close()
-                    #     except NoSuchElementException, e:
-                    #         f.close()
-                    #         new_driver.close()
-                    #         print >> f, e
-                    # except NoSuchElementException, e:
-                    #     f.close()
-                    #     new_driver.close()
-                    #     print >> f, e
+                    new_driver.get(url)
+                    try:
+                        search_combobox = WebDriverWait(new_driver, 10).until(
+                            EC.presence_of_element_located((By.CLASS_NAME, 'search-combobox-input-wrap'))
+                        )
+                        search_input = WebDriverWait(search_combobox, 10).until(
+                            EC.presence_of_element_located((By.ID, 'q'))
+                        )
+
+                        # 发送搜索词
+                        search_input.send_keys(keywords)
+
+                        search_button_wrap = WebDriverWait(new_driver, 10).until(
+                            EC.presence_of_element_located((By.CLASS_NAME, 'search-button'))
+                        )
+                        search_button = WebDriverWait(search_button_wrap, 10).until(
+                            EC.presence_of_element_located((By.CLASS_NAME, 'btn-search'))
+                        )
+                        search_button.click()
+                        try:
+                            print >> f, u'搜索成功，正在返回搜索结果...'.encode('utf-8')
+                            main_srp_item_list = WebDriverWait(new_driver, 10).until(
+                                EC.presence_of_element_located((By.ID, 'mainsrp-itemlist'))
+                            )
+                            m_item_list = WebDriverWait(main_srp_item_list, 10).until(
+                                EC.presence_of_element_located((By.CLASS_NAME, 'm-itemlist'))
+                            )
+                            items = WebDriverWait(m_item_list, 10).until(
+                                EC.presence_of_all_elements_located((By.CLASS_NAME, 'items'))
+                            )[0]
+                            all_items = WebDriverWait(items, 10).until(
+                                EC.presence_of_all_elements_located((By.CLASS_NAME, 'item'))
+                            )
+                            total_items = len(all_items)
+                            print >> f, u'总共返回{0}个搜索结果'.format(total_items).encode('utf-8')
+                            # 抓取商品图
+                            for (j, item) in enumerate(all_items):
+                                print >> f, u'正在爬取第{0}家店铺的数据...'.format(j + 1).encode('utf-8')
+                                item_pic = WebDriverWait(item, 10).until(
+                                    EC.presence_of_element_located((By.CLASS_NAME, 'J_ItemPic'))
+                                )
+                                item_pic_src = item_pic.get_attribute('src')
+                                item_pic_id = item_pic.get_attribute('id')
+                                try:
+                                    print >> f, u'正在爬取第{0}家店铺的商品图片...'.format(j + 1).encode('utf-8')
+                                    stream = requests.get(item_pic_src, timeout=10)
+                                    print >> f, u'第{0}家店铺的商品图片爬取完毕...'.format(j + 1).encode('utf-8')
+                                    im = Image.open(StringIO(stream.content))
+                                    if im.mode != 'RGB':
+                                        im = im.convert('RGB')
+                                    try:
+                                        im.save('media/pic/{0}.webp'.format(item_pic_id))
+                                    except IOError, e:
+                                        print >> f, e
+                                except requests.RequestException, e:
+                                    print >> f, u'第{0}家店铺的商品图片爬取失败...'.format(j + 1).encode('utf-8')
+                                    item_pic_data_src = item_pic.get_attribute('data-src')
+                                    print >> f, u'重新爬取第{0}家店铺的商品图片...'.format(j + 1).encode('utf-8')
+                                    stream = requests.get('https:'+item_pic_data_src, timeout=10)
+                                    print >> f, u'第{0}家店铺的商品图片爬取完毕...'.format(j + 1).encode('utf-8')
+                                    im = Image.open(StringIO(stream.content))
+                                    if im.mode != 'RGB':
+                                        im = im.convert('RGB')
+                                    try:
+                                        im.save('media/pic/{0}.webp'.format(item_pic_id))
+                                    except IOError, e:
+                                        print >> f, e
+
+                                item_price_and_link = WebDriverWait(item, 10).until(
+                                    EC.presence_of_element_located((By.CLASS_NAME, 'J_ClickStat'))
+                                )
+                                item_match_price = item_price_and_link.get_attribute('trace-price')
+                                item_link = item_price_and_link.get_attribute('href')
+
+                                item_title, item_price, item_taobao_price = find_out_real_price(f,
+                                                                                                j+1,
+                                                                                                item_link,
+                                                                                                item_match_price)
+                                print >> f, u'第{0}家店铺的商品价格和链接爬取完毕...'.format(j + 1).encode('utf-8')
+
+                                item_deal = WebDriverWait(item, 10).until(
+                                    EC.presence_of_element_located((By.CLASS_NAME, 'deal-cnt'))
+                                ).text
+                                print >> f, u'第{0}家店铺的商品交易量爬取完毕...'.format(j + 1).encode('utf-8')
+
+                                row_3 = WebDriverWait(item, 10).until(
+                                    EC.presence_of_element_located((By.CLASS_NAME, 'row-3'))
+                                )
+                                item_shop_name = WebDriverWait(row_3, 10).until(
+                                    EC.presence_of_all_elements_located((By.TAG_NAME, 'span'))
+                                )[4].text
+                                print >> f, u'第{0}家店铺的商铺名爬取完毕...'.format(j + 1).encode('utf-8')
+
+                                item_location = WebDriverWait(row_3, 10).until(
+                                    EC.presence_of_element_located((By.CLASS_NAME, 'location'))
+                                ).text
+                                print >> f, u'第{0}家店铺的货源地爬取完毕...'.format(j + 1).encode('utf-8')
+
+                                if item_location == '':
+                                    item_location = u'抓取为空'
+
+                                # 存储数据
+                                obj = TempItemStorage(ItemLink=item_link, ItemPicId=item_pic_id,
+                                                      ItemTitle=item_title, ItemShopName=item_shop_name,
+                                                      ItemLocation=item_location, ItemPrice=item_price,
+                                                      ItemTaoBaoPrice=item_taobao_price, ItemDeal=item_deal)
+                                obj.save()
+                            print >> f, u'数据爬取完毕'.encode('utf-8')
+                            f.close()
+                            new_driver.close()
+                        except NoSuchElementException, e:
+                            new_driver.close()
+                            print >> f, e
+                            f.close()
+                    except NoSuchElementException, e:
+                        new_driver.close()
+                        print >> f, e
+                        f.close()
                 except TimeoutException, e:
-                    f.close()
                     new_driver.close()
                     print >> f, e
+                    f.close()
             except WebDriverException, e:
-                f.close()
                 print >> f, e
+                f.close()
             return HttpResponse()
     if request.is_ajax() and request.method == "POST":
         if request.POST.get("type") == "2":
