@@ -52,10 +52,25 @@ def parse_price_sim(url, fff, new_driver):
             link = WebDriverWait(title, 10).until(
                 expected_conditions.presence_of_element_located((By.TAG_NAME, 'a'))
             ).get_attribute('href')
+
             html = urllib2.urlopen(link).read()
             soup = BeautifulSoup(html, 'lxml', from_encoding='utf-8')
-            price = soup.find(name='li', attrs={'id': 'J_StrPriceModBox'}).\
-                find(name='em', attrs={'class': 'tb-rmb-num'}).get_text().strip()
+
+            try:
+                price = soup.find(name='li', attrs={'id': 'J_StrPriceModBox'}).\
+                    find(name='em', attrs={'class': 'tb-rmb-num'}).get_text().strip()
+            except Exception, e:
+                temp_driver = webdriver.PhantomJS()
+                temp_driver.set_window_size(800, 400)
+                temp_driver.get(link)
+                tm_fcs_panel = WebDriverWait(driver, 10).until(
+                    expected_conditions.presence_of_element_located((By.CLASS_NAME, 'tm-fcs-panel'))
+                )
+                price = WebDriverWait(tm_fcs_panel, 10).until(
+                    expected_conditions.presence_of_element_located((By.TAG_NAME, 'span'))
+                ).text
+                driver.close()
+            # TODO
             taobao_price = ''
             return price, taobao_price
         except NoSuchElementException, e:
@@ -71,7 +86,8 @@ def parse_price(url, ff, new_driver):
         price = soup.find(name='li', attrs={'id': 'J_StrPriceModBox'}).\
             find(name='em', attrs={'class': 'tb-rmb-num'}).get_text().strip()
         taobao_price = ''
-    except AttributeError:
+    except AttributeError, e:
+        # TODO
         price, taobao_price = parse_price_sim(url, ff, new_driver)
     return price, taobao_price
 
