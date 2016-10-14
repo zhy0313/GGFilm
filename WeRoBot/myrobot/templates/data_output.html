@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block tilte %}
+{% endblock %}
+
+{% block extracss %}
+<link href="{% static 'css/data_output.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+    <div class="row-fluid row1">
+		<div class="button-area">
+			<a href="/price-trace"><button class="btn crawlerpage-button">前往商品爬虫操作页面</button></a>
+		</div>
+        <div class="col-md-12 col-sm-12 col-xs-12 col">
+			<div class="well" style="text-align: center;">
+                导出的数据表以商品名称划分所有商品的集合，勾选商品名称并点击导出按钮，那么就可以导出整张都属于该商品名称的商品数据表！
+			</div>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>商品名称</th>
+					</tr>
+				</thead>
+				{% for productname in productname_list %}
+				<tbody>
+					<tr>
+						<td style="font-size: 20px;">
+							<p><input type="checkbox" class="checkbox" name="category" value="{{ productname.ProductName }}"/>
+								&nbsp;&nbsp;
+								<strong>{{ productname.ProductName }}</strong></p>
+						</td>
+					</tr>
+				</tbody>
+				{% endfor %}
+			</table>
+        </div>
+		<div class="button-area">
+			<button class="btn export-button">导出实时数据</button>
+		</div>
+    </div>
+</div>
+{% endblock %}
+
+{% block script_files %}
+{% endblock %}
+
+{% block script %}
+    $(document).ready(function(){
+        $(".export-button").click(function(){
+			var current_this = $(this);
+			var arr = new Array();
+            var s = "";
+        	var items = document.getElementsByName("category");
+        	for (i = 0; i < items.length; i++) {
+            	if (items[i].checked) {
+                	arr.push(items[i].value);
+                    s += items[i].value;
+                    s += "!";
+            	}
+        	}
+        	alert("选择的个数为：" + arr.length);
+
+            function getCookie(name) {
+                var cookieValue = null;
+                if (document.cookie && document.cookie != '') {
+                    var cookies = document.cookie.split(';');
+                    for (var i = 0; i < cookies.length; i++) {
+                        var cookie = jQuery.trim(cookies[i]);
+                        // Does this cookie string begin with the name we want?
+                        if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                            break;
+                        }
+                    }
+                }
+                return cookieValue;
+            }
+            var csrftoken = getCookie('csrftoken');
+
+            function csrfSafeMethod(method) {
+                // these HTTP methods do not require CSRF protection
+                return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+            }
+            $.ajaxSetup({
+                beforeSend: function(xhr, settings) {
+                    if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                        xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                    }
+                }
+            });
+
+            $.ajax({
+                url : "/data-output",
+                type : "POST",
+                dataType : "text",
+                data : {array: s},
+
+                success: function(data){
+                    alert("数据导出成功！");
+                },
+
+                complete: function(){
+                },
+
+                error: function(){
+                    $.alert({
+                        title: "提示",
+                        content: "服务器发生错误!",
+                        confirmButton: "知道了",
+                        confirmButtonClass: "btn-success",
+                    });
+                },
+			});
+        });
+    });
+{% endblock %}

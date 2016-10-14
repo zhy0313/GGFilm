@@ -90,6 +90,7 @@ class TempItemStorage(models.Model):
 
 
 class ItemStorage(models.Model):
+    ItemProductName = models.CharField(u'商品名称', max_length=200)
     ItemLink = models.URLField(u'商品URL地址')
     ItemTitle = models.CharField(u'商品描述', max_length=500)
     ItemShopName = models.CharField(u'店铺名', max_length=200)
@@ -105,3 +106,17 @@ class ItemStorage(models.Model):
     class Meta:
         verbose_name = "Item Storage"
         verbose_name_plural = "Item Storage"
+
+
+class ProductName(models.Model):
+    ProductName = models.CharField(u'商品名称', max_length=200)
+
+    create_timestamp = models.DateTimeField(auto_now_add=True)
+    last_update_timestamp = models.DateTimeField(auto_now=True)
+
+    def __unicode__(self):
+        return self.ProductName
+
+    class Meta:
+        verbose_name = "Product Name"
+        verbose_name_plural = "Product Name"

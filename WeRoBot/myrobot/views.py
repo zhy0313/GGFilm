@@ -17,6 +17,7 @@ import requests
 import time
 import urllib
 import urllib2
+import xlwt
 
 from django.conf import settings
 from django.core.mail import EmailMultiAlternatives
@@ -31,7 +32,7 @@ from wechat_sdk.exceptions import *
 from wechat_sdk.messages import *
 from wechat_sdk.context.framework.django import DatabaseContextStore
 
-from models import FilmSearch, Films, Notes, TempItemStorage, ItemStorage
+from models import FilmSearch, Films, Notes, TempItemStorage, ItemStorage, ProductName
 
 
 conf = WechatConf(
@@ -366,7 +367,8 @@ def price_trace(request):
 
             url = 'https://www.taobao.com/'
             try:
-                new_driver = webdriver.PhantomJS()
+                # new_driver = webdriver.PhantomJS()
+                new_driver = webdriver.Firefox()
                 new_driver.set_window_size(800, 400)
                 try:
                     print >> f, u'模拟登录淘宝网'.encode('utf-8')
@@ -513,6 +515,7 @@ def price_trace(request):
             return HttpResponse()
     if request.is_ajax() and request.method == "POST":
         if request.POST.get("type") == "2":
+            add_item_productname = request.POST.get("item_productname")
             add_item_link = request.POST.get("item_link")
             add_item_title = request.POST.get("item_title")
             add_item_shopname = request.POST.get("item_shopname")
@@ -525,10 +528,47 @@ def price_trace(request):
             temp_item.Has_Been_Selected = True
             temp_item.save()
 
-            item = ItemStorage(ItemLink=add_item_link, ItemTitle=add_item_title,
-                               ItemShopName=add_item_shopname, ItemPrice=add_item_price,
-                               ItemTaoBaoPrice=add_item_taobao_price)
+            item = ItemStorage(ItemProductName=add_item_productname, ItemLink=add_item_link,
+                               ItemTitle=add_item_title, ItemShopName=add_item_shopname,
+                               ItemPrice=add_item_price, ItemTaoBaoPrice=add_item_taobao_price)
             item.save()
             return HttpResponse()
+    if request.is_ajax() and request.method == "GET":
+        if request.GET.get("type") == "3":
+            add_productname = request.GET.get("productname")
+            record = ProductName(ProductName=add_productname)
+            record.save()
+            return HttpResponse()
+
     cached_item_list = TempItemStorage.objects.all()
     return render(request, "price_trace.html", {"item_list": cached_item_list})
+
+
+def data_output(request):
+    if request.is_ajax() and request.method == "POST":
+        array = request.POST.get("array")
+        productname_list = array.split("!")
+        current_time = get_current_time()
+        for productname in productname_list[:-1]:
+            items = ItemStorage.objects.filter(ItemProductName=productname)
+            excel = xlwt.Workbook()
+            sheet = excel.add_sheet('DataSheet', cell_overwrite_ok=True)
+            sheet.write(0, 0, u"商品名称")
+            sheet.write(0, 1, u"店铺名称")
+            sheet.write(0, 2, u"商品描述")
+            sheet.write(0, 3, u"商品价格")
+            sheet.write(0, 4, u"商品淘宝价格")
+            sheet.write(0, 5, u"更新时间")
+            sheet.write(0, 6, u"店铺淘宝地址")
+            for (j, item) in enumerate(items):
+                sheet.write(j + 1, 0, item.ItemProductName)
+                sheet.write(j + 1, 1, item.ItemShopName)
+                sheet.write(j + 1, 2, item.ItemTitle)
+                sheet.write(j + 1, 3, item.ItemPrice)
+                sheet.write(j + 1, 4, item.ItemTaoBaoPrice)
+                sheet.write(j + 1, 5, str(item.last_update_timestamp))
+                sheet.write(j + 1, 6, item.ItemLink)
+            excel.save("/home/ggfilm/Documents/export-excel/export-{0}-{1}.xls".format(current_time, productname))
+        return HttpResponse()
+    productname_list = ProductName.objects.order_by("-create_timestamp")
+    return render(request, "data_output.html", {"productname_list": productname_list})

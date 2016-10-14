@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from models import FilmSearch, Films, Developers, Notes, ItemStorage
+from models import FilmSearch, Films, Developers, Notes, ItemStorage, ProductName
 
 
 class FilmSearchAdmin(admin.ModelAdmin):
@@ -45,11 +45,21 @@ class NotesAdmin(admin.ModelAdmin):
 
 class ItemStorageAdmin(admin.ModelAdmin):
     list_display = (
-        "ItemTitle", "ItemShopName", "ItemPrice", "ItemTaoBaoPrice", "last_update_timestamp"
+        "ItemProductName", "ItemTitle", "ItemShopName", "ItemPrice", "ItemTaoBaoPrice", "last_update_timestamp"
     )
 
     list_filter = (
-        "ItemShopName",
+        "ItemProductName",
+    )
+
+
+class ProductNameAdmin(admin.ModelAdmin):
+    list_display = (
+        "ProductName", "create_timestamp"
+    )
+
+    list_filter = (
+        "create_timestamp",
     )
 
 
@@ -58,3 +68,4 @@ admin.site.register(Films, FilmsAdmin)
 admin.site.register(Developers, DevelopersAdmin)
 admin.site.register(Notes, NotesAdmin)
 admin.site.register(ItemStorage, ItemStorageAdmin)
+admin.site.register(ProductName, ProductNameAdmin)

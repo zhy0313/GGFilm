@@ -35,6 +35,7 @@ urlpatterns = [
     url(r'^search/result', 'myrobot.views.search_database_result', name='search_result'),
     url(r'^auth', 'myrobot.views.buyer_authenticate', name='buyer_authenticate'),
     url(r'^price-trace', 'myrobot.views.price_trace', name='price_trace'),
+    url(r'^data-output', 'myrobot.views.data_output', name='data_output'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

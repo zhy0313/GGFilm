@@ -29,6 +29,42 @@
     color: #FFFFFF;
 }
 
+.preoperation-area .store-productname-button {
+    margin-bottom: 4px;
+    height: 40px;
+    background-color: #F52B00;
+    font-size: 16px;
+    color: #FFFFFF;
+}
+
+.preoperation-area .store-productname-button:hover {
+    color: #FFFFFF;
+}
+
+.preoperation-area .update-data-button {
+    margin-bottom: 4px;
+    height: 40px;
+    background-color: #F52B00;
+    font-size: 16px;
+    color: #FFFFFF;
+}
+
+.preoperation-area .update-data-button:hover {
+    color: #FFFFFF;
+}
+
+.preoperation-area .export-data-button {
+    margin-bottom: 4px;
+    height: 40px;
+    background-color: #55AA00;
+    font-size: 16px;
+    color: #FFFFFF;
+}
+
+.preoperation-area .export-data-button:hover {
+    color: #FFFFFF;
+}
+
 .row2 {
     margin-top: 20px;
 }

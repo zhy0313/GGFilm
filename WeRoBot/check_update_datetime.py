@@ -80,7 +80,8 @@ if __name__ == '__main__':
         if last_update_datetime != stored_datetime:
             fp.write(last_update_datetime)
             try:
-                driver = webdriver.PhantomJS()
+                # driver = webdriver.PhantomJS()
+                driver = webdriver.Firefox()
                 driver.set_window_size(1366, 768)
                 try:
                     driver.get("http://www.digitaltruth.com/devchart.php?doc=search")

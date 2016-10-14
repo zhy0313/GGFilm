@@ -27,6 +27,25 @@
         <div class="col-md-2 col-sm-2 col-xs-2 col">
         </div>
     </div>
+    <!-- 商品名称处理区 -->
+    <div class="row-fluid">
+        <div class="col-md-2 col-sm-2 col-xs-2 col">
+        </div>
+        <div class="col-md-8 col-sm-8 col-xs-8 col">
+            <div class="well preoperation-area" style="text-align: center;">
+                在进行以下操作前，请务必认真填写商品名称，并将商品名称标识存入数据库！
+                <br/>
+                <input type="text" name="inputProductName" class="input-ProductName" placeholder="输入商品名称" size="20" style="border: 3px #F52B00 solid; font-size: 17px;"/>
+                <button class="btn store-productname-button">商品标识入库</button>
+                &nbsp;&nbsp;
+                <strong>|</strong>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <button class="btn update-data-button">手动更新数据</button>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="/data-output"><button class="btn export-data-button">手动导出数据表格</button></a>
+            </div>
+        </div>
+    </div>
     {% for item in item_list %}
     <div class="row-fluid row2">
         <div class="col-md-2 col-sm-2 col-xs-2 col">
@@ -118,6 +137,7 @@
             }
 
             var current_this = $(this);
+            var item_productname = $(".input-ProductName").val();
             var item_link = current_this.parent().parent().prev().prev().prev().find(".item-link").html().trim();
             var item_title = current_this.parent().parent().prev().find(".title").html().trim();
             var item_shopname = current_this.parent().parent().prev().find(".shop-name").html().split("</strong>")[1].trim();
@@ -163,7 +183,8 @@
                 url : "/price-trace",
                 type : "POST",
                 dataType : "text",
-                data : {item_link: item_link,
+                data : {item_productname: item_productname,
+                        item_link: item_link,
                         item_title: item_title,
                         item_shopname: item_shopname,
                         item_price: item_price,
@@ -172,6 +193,32 @@
 
                 success: function(data){
                     current_this.parent().find('h5').html("已加入价格跟踪队列");
+                },
+
+                complete: function(){
+                },
+
+                error: function(){
+                    $.alert({
+                        title: "提示",
+                        content: "服务器发生错误!",
+                        confirmButton: "知道了",
+                        confirmButtonClass: "btn-success",
+                    });
+                },
+            });
+        });
+
+        $(".store-productname-button").click(function(){
+            var productname = $(".input-ProductName").val();
+            $.ajax({
+                url : "/price-trace",
+                type : "GET",
+                dataType : "text",
+                data : {productname: productname, type: 3},
+
+                success: function(data){
+                    alert("商品标识成功入库！");
                 },
 
                 complete: function(){
