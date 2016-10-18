@@ -45,7 +45,7 @@ class NotesAdmin(admin.ModelAdmin):
 
 class ItemStorageAdmin(admin.ModelAdmin):
     list_display = (
-        "ItemProductName", "ItemTitle", "ItemShopName", "ItemPrice", "ItemTaoBaoPrice", "last_update_timestamp"
+        "id", "ItemProductName", "ItemTitle", "ItemShopName", "ItemPrice", "ItemTaoBaoPrice", "last_update_timestamp"
     )
 
     list_filter = (

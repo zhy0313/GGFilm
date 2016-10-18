@@ -19,42 +19,42 @@ def get_current_time():
 
 
 def parse_price_sim(url, fff, new_driver):
-    try:
-        new_driver.get(url)
-        try:
-            username_input_field = WebDriverWait(new_driver, 10).until(
-                expected_conditions.presence_of_element_located((By.CLASS_NAME, 'username-field'))
-            )
-            username_input_box = WebDriverWait(username_input_field, 10).until(
-                expected_conditions.presence_of_element_located((By.TAG_NAME, 'input'))
-            )
-            username_input_box.send_keys("username")
-            password_input_field = WebDriverWait(new_driver, 10).until(
-                expected_conditions.presence_of_element_located((By.CLASS_NAME, 'pwd-field'))
-            )
-            password_input_box = WebDriverWait(password_input_field, 10).until(
-                expected_conditions.presence_of_element_located((By.TAG_NAME, 'input'))
-            )
-            password_input_box.send_keys("password")
-            login_button = WebDriverWait(new_driver, 10).until(
-                expected_conditions.presence_of_element_located((By.ID, 'J_SubmitStatic'))
-            )
-            login_button.click()
+    # try:
+    #     new_driver.get(url)
+        # try:
+        #     username_input_field = WebDriverWait(new_driver, 10).until(
+        #         expected_conditions.presence_of_element_located((By.CLASS_NAME, 'username-field'))
+        #     )
+        #     username_input_box = WebDriverWait(username_input_field, 10).until(
+        #         expected_conditions.presence_of_element_located((By.TAG_NAME, 'input'))
+        #     )
+        #     username_input_box.send_keys("")
+        #     password_input_field = WebDriverWait(new_driver, 10).until(
+        #         expected_conditions.presence_of_element_located((By.CLASS_NAME, 'pwd-field'))
+        #     )
+        #     password_input_box = WebDriverWait(password_input_field, 10).until(
+        #         expected_conditions.presence_of_element_located((By.TAG_NAME, 'input'))
+        #     )
+        #     password_input_box.send_keys("")
+        #     login_button = WebDriverWait(new_driver, 10).until(
+        #         expected_conditions.presence_of_element_located((By.ID, 'J_SubmitStatic'))
+        #     )
+        #     login_button.click()
+        #
+        #     search_result = WebDriverWait(new_driver, 10).until(
+        #         expected_conditions.presence_of_element_located((By.CLASS_NAME, 'search-result'))
+        #     )
+        #     search_result_box = WebDriverWait(search_result, 10).until(
+        #         expected_conditions.presence_of_all_elements_located((By.CLASS_NAME, 'search-result-box'))
+        #     )[0]
+        #     title = WebDriverWait(search_result_box, 10).until(
+        #         expected_conditions.presence_of_element_located((By.CLASS_NAME, 'title'))
+        #     )
+        #     link = WebDriverWait(title, 10).until(
+        #         expected_conditions.presence_of_element_located((By.TAG_NAME, 'a'))
+        #     ).get_attribute('href')
 
-            search_result = WebDriverWait(new_driver, 10).until(
-                expected_conditions.presence_of_element_located((By.CLASS_NAME, 'search-result'))
-            )
-            search_result_box = WebDriverWait(search_result, 10).until(
-                expected_conditions.presence_of_all_elements_located((By.CLASS_NAME, 'search-result-box'))
-            )[0]
-            title = WebDriverWait(search_result_box, 10).until(
-                expected_conditions.presence_of_element_located((By.CLASS_NAME, 'title'))
-            )
-            link = WebDriverWait(title, 10).until(
-                expected_conditions.presence_of_element_located((By.TAG_NAME, 'a'))
-            ).get_attribute('href')
-
-            html = urllib2.urlopen(link).read()
+            html = urllib2.urlopen(url).read()
             soup = BeautifulSoup(html, 'lxml', from_encoding='utf-8')
 
             try:
@@ -63,21 +63,26 @@ def parse_price_sim(url, fff, new_driver):
             except Exception, e:
                 temp_driver = webdriver.PhantomJS()
                 temp_driver.set_window_size(800, 400)
-                temp_driver.get(link)
-                tm_fcs_panel = WebDriverWait(new_driver, 10).until(
+                temp_driver.get(url)
+                tm_fcs_panel = WebDriverWait(temp_driver, 10).until(
                     expected_conditions.presence_of_element_located((By.CLASS_NAME, 'tm-fcs-panel'))
                 )
+                # price = WebDriverWait(tm_fcs_panel, 10).until(
+                #     expected_conditions.presence_of_element_located((By.TAG_NAME, 'span'))
+                # ).text
                 price = WebDriverWait(tm_fcs_panel, 10).until(
-                    expected_conditions.presence_of_element_located((By.TAG_NAME, 'span'))
+                    expected_conditions.presence_of_element_located((By.CLASS_NAME, 'tm-price'))
                 ).text
-                new_driver.close()
+                temp_driver.close()
             # TODO
             taobao_price = ''
             return price, taobao_price
-        except NoSuchElementException, e:
-            print >> fff, e
-    except TimeoutException, e:
-        print >> fff, e
+    #     except NoSuchElementException, e:
+    #         print >> fff, e
+    #         new_driver.close()
+    # except TimeoutException, e:
+    #     print >> fff, e
+    #     new_driver.close()
 
 
 def parse_price(url, ff, new_driver):
@@ -87,9 +92,11 @@ def parse_price(url, ff, new_driver):
         price = soup.find(name='li', attrs={'id': 'J_StrPriceModBox'}).\
             find(name='em', attrs={'class': 'tb-rmb-num'}).get_text().strip()
         taobao_price = ''
+        print "{0} / {1}".format(price, taobao_price)
     except AttributeError, e:
         # TODO
         price, taobao_price = parse_price_sim(url, ff, new_driver)
+        print "{0} / {1}".format(price, taobao_price)
     return price, taobao_price
 
 
@@ -103,14 +110,13 @@ def main():
     changed_list = []
 
     try:
-        # driver = webdriver.PhantomJS()
-        driver = webdriver.Firefox()
-        driver.set_window_size(1366, 768)
+        driver = webdriver.PhantomJS()
+        driver.set_window_size(800, 400)
     except WebDriverException, error:
         print >> f, error
 
     from myrobot.models import ItemStorage
-    all_items = ItemStorage.objects.all()
+    all_items = ItemStorage.objects.all().order_by("id")
     for (j, item) in enumerate(all_items):
         print >> f, u"开始跟踪第{0}件商品的数据".encode('utf-8').format(j + 1)
         item_price, item_taobao_price = parse_price(item.ItemLink, f, driver)
@@ -130,7 +136,7 @@ def main():
         print >> f, u"第{0}件商品的数据跟踪结束".encode('utf-8').format(j + 1)
     driver.close()
 
-    if len(changed_list) == 0:
+    if len(changed_list) != 0:
         from django.conf import settings
         from django.core.mail import EmailMultiAlternatives
         subject = "龟龟摄影微信服务器"

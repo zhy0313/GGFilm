@@ -6,6 +6,13 @@
 
 {% block extracss %}
 <link href="{% static 'css/price_trace.css' %}" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'jquery-textext/css/textext.core.css' %}" />
+<link rel="stylesheet" href="{% static 'jquery-textext/css/textext.plugin.arrow.css' %}" />
+<link rel="stylesheet" href="{% static 'jquery-textext/css/textext.plugin.autocomplete.css' %}" />
+<link rel="stylesheet" href="{% static 'jquery-textext/css/textext.plugin.clear.css' %}" />
+<link rel="stylesheet" href="{% static 'jquery-textext/css/textext.plugin.focus.css' %}" />
+<link rel="stylesheet" href="{% static 'jquery-textext/css/textext.plugin.prompt.css' %}" />
+<link rel="stylesheet" href="{% static 'jquery-textext/css/textext.plugin.tags.css' %}" />
 {% endblock %}
 
 {% block body %}
@@ -101,6 +108,16 @@
 {% endblock %}
 
 {% block script_files %}
+<script src="/static/jquery-textext/js/textext.core.js"></script>
+<script src="/static/jquery-textext/js/textext.plugin.ajax.js"></script>
+<script src="/static/jquery-textext/js/textext.plugin.arrow.js"></script>
+<script src="/static/jquery-textext/js/textext.plugin.autocomplete.js"></script>
+<script src="/static/jquery-textext/js/textext.plugin.clear.js"></script>
+<script src="/static/jquery-textext/js/textext.plugin.filter.js"></script>
+<script src="/static/jquery-textext/js/textext.plugin.focus.js"></script>
+<script src="/static/jquery-textext/js/textext.plugin.prompt.js"></script>
+<script src="/static/jquery-textext/js/textext.plugin.suggestions.js"></script>
+<script src="/static/jquery-textext/js/textext.plugin.tags.js"></script>
 {% endblock %}
 
 {% block script %}
@@ -138,6 +155,12 @@
 
             var current_this = $(this);
             var item_productname = $(".input-ProductName").val();
+            if (item_productname.length == 0) {
+                alert("商品名称输入不能为空！");
+                has_input_productname = "false";
+            } else {
+                has_input_productname = "true";
+            }
             var item_link = current_this.parent().parent().prev().prev().prev().find(".item-link").html().trim();
             var item_title = current_this.parent().parent().prev().find(".title").html().trim();
             var item_shopname = current_this.parent().parent().prev().find(".shop-name").html().split("</strong>")[1].trim();
@@ -184,6 +207,7 @@
                 type : "POST",
                 dataType : "text",
                 data : {item_productname: item_productname,
+                        has_input_productname: has_input_productname,
                         item_link: item_link,
                         item_title: item_title,
                         item_shopname: item_shopname,
@@ -192,7 +216,9 @@
                         type: 2},
 
                 success: function(data){
-                    current_this.parent().find('h5').html("已加入价格跟踪队列");
+                    if (data == "Done") {
+                        current_this.parent().find('h5').html("已加入价格跟踪队列");
+                    }
                 },
 
                 complete: function(){
@@ -218,7 +244,11 @@
                 data : {productname: productname, type: 3},
 
                 success: function(data){
-                    alert("商品标识成功入库！");
+                    if (data == "Exist") {
+                        alert("商品标识已在库内（重复记录）！");
+                    } else {
+                        alert("商品标识成功入库！");
+                    }
                 },
 
                 complete: function(){

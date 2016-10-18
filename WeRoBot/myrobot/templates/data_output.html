@@ -95,11 +95,13 @@
             $.ajax({
                 url : "/data-output",
                 type : "POST",
+                <!--contentType: "application/json; charset=utf-8",-->
                 dataType : "text",
-                data : {array: s},
+                data : {array: arr},
 
                 success: function(data){
                     alert("数据导出成功！");
+                    window.location.href = "http://127.0.0.1:8000/data-output";
                 },
 
                 complete: function(){

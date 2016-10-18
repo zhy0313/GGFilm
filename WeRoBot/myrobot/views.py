@@ -367,8 +367,7 @@ def price_trace(request):
 
             url = 'https://www.taobao.com/'
             try:
-                # new_driver = webdriver.PhantomJS()
-                new_driver = webdriver.Firefox()
+                new_driver = webdriver.PhantomJS()
                 new_driver.set_window_size(800, 400)
                 try:
                     print >> f, u'模拟登录淘宝网'.encode('utf-8')
@@ -514,7 +513,7 @@ def price_trace(request):
                 f.close()
             return HttpResponse()
     if request.is_ajax() and request.method == "POST":
-        if request.POST.get("type") == "2":
+        if request.POST.get("type") == "2" and request.POST.get("has_input_productname") == "true":
             add_item_productname = request.POST.get("item_productname")
             add_item_link = request.POST.get("item_link")
             add_item_title = request.POST.get("item_title")
@@ -532,13 +531,20 @@ def price_trace(request):
                                ItemTitle=add_item_title, ItemShopName=add_item_shopname,
                                ItemPrice=add_item_price, ItemTaoBaoPrice=add_item_taobao_price)
             item.save()
-            return HttpResponse()
+            return HttpResponse("Done")
+        elif request.POST.get("type") == "2" and request.POST.get("has_input_productname") == "false":
+            return HttpResponse("Not Done")
     if request.is_ajax() and request.method == "GET":
         if request.GET.get("type") == "3":
             add_productname = request.GET.get("productname")
-            record = ProductName(ProductName=add_productname)
-            record.save()
-            return HttpResponse()
+            try:
+                ProductName.objects.get(ProductName=add_productname)
+                flag = "Exist"
+            except ProductName.DoesNotExist:
+                record = ProductName(ProductName=add_productname)
+                record.save()
+                flag = "Not Exist"
+            return HttpResponse(flag)
 
     cached_item_list = TempItemStorage.objects.all()
     return render(request, "price_trace.html", {"item_list": cached_item_list})
@@ -546,11 +552,11 @@ def price_trace(request):
 
 def data_output(request):
     if request.is_ajax() and request.method == "POST":
-        array = request.POST.get("array")
-        productname_list = array.split("!")
+        # req = json.loads(request.raw_post_data)
+        array = request.POST.getlist("array[]")
         current_time = get_current_time()
-        for productname in productname_list[:-1]:
-            items = ItemStorage.objects.filter(ItemProductName=productname)
+        for productname in array:
+            items = ItemStorage.objects.filter(ItemProductName=productname.encode("utf-8"))
             excel = xlwt.Workbook()
             sheet = excel.add_sheet('DataSheet', cell_overwrite_ok=True)
             sheet.write(0, 0, u"商品名称")

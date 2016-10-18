@@ -2,65 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="94cdc54c-2523-46da-aab1-d05fd0c5de86" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WeRoBot/logs/price_trace.log" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WeRoBot/media/pic/J_Itemlist_Pic_10315361063523.webp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WeRoBot/media/pic/J_Itemlist_Pic_1082934609062.webp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WeRoBot/media/pic/J_Itemlist_Pic_11387105661053.webp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WeRoBot/media/pic/J_Itemlist_Pic_18312162295.webp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WeRoBot/media/pic/J_Itemlist_Pic_20157550746.webp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WeRoBot/media/pic/J_Itemlist_Pic_20180610980.webp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WeRoBot/media/pic/J_Itemlist_Pic_20388591874.webp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WeRoBot/media/pic/J_Itemlist_Pic_22734180215.webp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WeRoBot/media/pic/J_Itemlist_Pic_2995617914.webp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WeRoBot/media/pic/J_Itemlist_Pic_36877937005.webp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WeRoBot/media/pic/J_Itemlist_Pic_37891738722.webp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WeRoBot/media/pic/J_Itemlist_Pic_40084940174.webp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WeRoBot/media/pic/J_Itemlist_Pic_41026344652.webp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WeRoBot/media/pic/J_Itemlist_Pic_43369453384.webp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WeRoBot/media/pic/J_Itemlist_Pic_44874282427.webp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WeRoBot/media/pic/J_Itemlist_Pic_520034739098.webp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WeRoBot/media/pic/J_Itemlist_Pic_520252576452.webp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WeRoBot/media/pic/J_Itemlist_Pic_520438577126.webp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WeRoBot/media/pic/J_Itemlist_Pic_520502050989.webp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WeRoBot/media/pic/J_Itemlist_Pic_521035513113.webp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WeRoBot/media/pic/J_Itemlist_Pic_521218807390.webp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WeRoBot/media/pic/J_Itemlist_Pic_521392971022.webp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WeRoBot/media/pic/J_Itemlist_Pic_523137363064.webp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WeRoBot/media/pic/J_Itemlist_Pic_523392192600.webp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WeRoBot/media/pic/J_Itemlist_Pic_524162718769.webp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WeRoBot/media/pic/J_Itemlist_Pic_524222977967.webp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WeRoBot/media/pic/J_Itemlist_Pic_524357866274.webp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WeRoBot/media/pic/J_Itemlist_Pic_525030990041.webp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WeRoBot/media/pic/J_Itemlist_Pic_526268836039.webp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WeRoBot/media/pic/J_Itemlist_Pic_527049507142.webp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WeRoBot/media/pic/J_Itemlist_Pic_527295320251.webp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WeRoBot/media/pic/J_Itemlist_Pic_528085058281.webp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WeRoBot/media/pic/J_Itemlist_Pic_528298765393.webp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WeRoBot/media/pic/J_Itemlist_Pic_528489775797.webp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WeRoBot/media/pic/J_Itemlist_Pic_528742449847.webp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WeRoBot/media/pic/J_Itemlist_Pic_528981609170.webp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WeRoBot/media/pic/J_Itemlist_Pic_529041784835.webp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WeRoBot/media/pic/J_Itemlist_Pic_529288848927.webp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WeRoBot/media/pic/J_Itemlist_Pic_529574182760.webp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WeRoBot/media/pic/J_Itemlist_Pic_530725003156.webp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WeRoBot/media/pic/J_Itemlist_Pic_531166980534.webp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WeRoBot/media/pic/J_Itemlist_Pic_531499722421.webp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WeRoBot/media/pic/J_Itemlist_Pic_531542644247.webp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WeRoBot/media/pic/J_Itemlist_Pic_531891822706.webp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WeRoBot/media/pic/J_Itemlist_Pic_531945380075.webp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WeRoBot/media/pic/J_Itemlist_Pic_533348348754.webp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WeRoBot/media/pic/J_Itemlist_Pic_78300202610102.webp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WeRoBot/myrobot/tests.py" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WeRoBot/db.sqlite3" afterPath="$PROJECT_DIR$/WeRoBot/db.sqlite3" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WeRoBot/WeRoBot/urls.py" afterPath="$PROJECT_DIR$/WeRoBot/WeRoBot/urls.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WeRoBot/WeRoBot/settings.py" afterPath="$PROJECT_DIR$/WeRoBot/WeRoBot/settings.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WeRoBot/check_price_update.py" afterPath="$PROJECT_DIR$/WeRoBot/check_price_update.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WeRoBot/check_update_datetime.py" afterPath="$PROJECT_DIR$/WeRoBot/check_update_datetime.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WeRoBot/myrobot/admin.py" afterPath="$PROJECT_DIR$/WeRoBot/myrobot/admin.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WeRoBot/myrobot/models.py" afterPath="$PROJECT_DIR$/WeRoBot/myrobot/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WeRoBot/myrobot/templates/data_output.html" afterPath="$PROJECT_DIR$/WeRoBot/myrobot/templates/data_output.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WeRoBot/myrobot/templates/price_trace.html" afterPath="$PROJECT_DIR$/WeRoBot/myrobot/templates/price_trace.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WeRoBot/myrobot/views.py" afterPath="$PROJECT_DIR$/WeRoBot/myrobot/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WeRoBot/static/css/price_trace.css" afterPath="$PROJECT_DIR$/WeRoBot/static/css/price_trace.css" />
     </list>
     <ignored path="GGFilm.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -98,24 +47,25 @@
       <list>
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/WeRoBot/conf.ini" />
-        <option value="$PROJECT_DIR$/WeRoBot/WeRoBot/settings.py" />
         <option value="$PROJECT_DIR$/new_suggetions" />
         <option value="$PROJECT_DIR$/WeRoBot/myrobot/models.py" />
         <option value="$PROJECT_DIR$/WeRoBot/WeRoBot/urls.py" />
-        <option value="$PROJECT_DIR$/WeRoBot/myrobot/admin.py" />
         <option value="$PROJECT_DIR$/WeRoBot/static/css/price_trace.css" />
         <option value="$PROJECT_DIR$/WeRoBot/myrobot/test.py" />
         <option value="$PROJECT_DIR$/WeRoBot/__init__.py" />
-        <option value="$PROJECT_DIR$/WeRoBot/logs/price_data_update.log" />
         <option value="$PROJECT_DIR$/WeRoBot/static/css/data_output.css" />
-        <option value="$PROJECT_DIR$/WeRoBot/myrobot/templates/price_trace.html" />
-        <option value="$PROJECT_DIR$/WeRoBot/myrobot/templates/data_output.html" />
         <option value="$PROJECT_DIR$/WeRoBot/a.txt" />
         <option value="$PROJECT_DIR$/WeRoBot/check_update_datetime.py" />
-        <option value="$PROJECT_DIR$/WeRoBot/check_price_update.py" />
-        <option value="$PROJECT_DIR$/WeRoBot/myrobot/views.py" />
-        <option value="$PROJECT_DIR$/WeRoBot/ghostdriver.log" />
         <option value="$PROJECT_DIR$/WeRoBot/logs/price_trace.log" />
+        <option value="$PROJECT_DIR$/WeRoBot/WeRoBot/settings.py" />
+        <option value="$PROJECT_DIR$/WeRoBot/myrobot/templates/data_output.html" />
+        <option value="$PROJECT_DIR$/WeRoBot/templates/base.html" />
+        <option value="$PROJECT_DIR$/WeRoBot/myrobot/views.py" />
+        <option value="$PROJECT_DIR$/WeRoBot/myrobot/templates/price_trace.html" />
+        <option value="$PROJECT_DIR$/WeRoBot/myrobot/admin.py" />
+        <option value="$PROJECT_DIR$/WeRoBot/check_price_update.py" />
+        <option value="$PROJECT_DIR$/WeRoBot/ghostdriver.log" />
+        <option value="$PROJECT_DIR$/WeRoBot/logs/price_data_update.log" />
       </list>
     </option>
   </component>
@@ -149,8 +99,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -169,8 +117,24 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GGFilm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GGFilm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WeRoBot" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -335,14 +299,13 @@
     <frame x="1365" y="0" width="1922" height="1080" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16236162" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.227728" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32905295" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32916668" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.196875" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -350,6 +313,7 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32905295" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
@@ -370,6 +334,13 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/WeRoBot/check_price_update.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/WeRoBot/myrobot/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -409,9 +380,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="672">
           <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
-          <folding>
-            <element signature="e#43#57#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -419,57 +387,22 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/new_suggetions">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-231">
-          <caret line="9" column="77" selection-start-line="9" selection-start-column="77" selection-end-line="9" selection-end-column="77" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/new_suggetions" />
     <entry file="file://$PROJECT_DIR$/WeRoBot/WeRoBot/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="367">
           <caret line="37" column="71" selection-start-line="37" selection-start-column="71" selection-end-line="37" selection-end-column="71" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WeRoBot/myrobot/test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63">
-          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/WeRoBot/myrobot/test.py" />
     <entry file="file://$PROJECT_DIR$/WeRoBot/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="42">
           <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#25#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WeRoBot/WeRoBot/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="489">
-          <caret line="131" column="0" selection-start-line="131" selection-start-column="0" selection-end-line="131" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WeRoBot/myrobot/admin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="489">
-          <caret line="71" column="0" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -477,7 +410,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="405">
           <caret line="30" column="17" selection-start-line="30" selection-start-column="17" selection-end-line="30" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -485,35 +417,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-273">
           <caret line="47" column="4" selection-start-line="47" selection-start-column="4" selection-end-line="47" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WeRoBot/myrobot/update_database_print.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WeRoBot/myrobot/templates/price_trace.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="226" column="0" selection-start-line="226" selection-start-column="0" selection-end-line="233" selection-end-column="18" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#div#0;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#2;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WeRoBot/a.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -521,48 +424,78 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="573">
           <caret line="111" column="4" selection-start-line="111" selection-start-column="4" selection-end-line="111" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WeRoBot/WeRoBot/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="178">
+          <caret line="94" column="0" selection-start-line="94" selection-start-column="0" selection-end-line="94" selection-end-column="27" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WeRoBot/a.txt" />
+    <entry file="file://$PROJECT_DIR$/WeRoBot/myrobot/templates/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/WeRoBot/myrobot/templates/data_output.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="447">
-          <caret line="92" column="15" selection-start-line="92" selection-start-column="15" selection-end-line="92" selection-end-column="15" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="105">
+          <caret line="103" column="77" selection-start-line="103" selection-start-column="77" selection-end-line="103" selection-end-column="77" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WeRoBot/check_price_update.py">
+    <entry file="file://$PROJECT_DIR$/WeRoBot/templates/base.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3675">
-          <caret line="175" column="10" selection-start-line="175" selection-start-column="10" selection-end-line="175" selection-end-column="10" />
-          <folding>
-            <element signature="e#24#33#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="126">
+          <caret line="12" column="71" selection-start-line="12" selection-start-column="71" selection-end-line="12" selection-end-column="71" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WeRoBot/myrobot/update_database_print.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="46" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WeRoBot/myrobot/templates/price_trace.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="21">
+          <caret line="239" column="20" selection-start-line="239" selection-start-column="20" selection-end-line="239" selection-end-column="20" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/WeRoBot/check_update_datetime.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2247">
+        <state relative-caret-position="363">
           <caret line="107" column="0" selection-start-line="107" selection-start-column="0" selection-end-line="107" selection-end-column="0" />
-          <folding>
-            <element signature="e#24#33#0" expanded="true" />
-          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WeRoBot/myrobot/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="111">
+          <caret line="47" column="14" selection-start-line="47" selection-start-column="14" selection-end-line="47" selection-end-column="14" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/WeRoBot/myrobot/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="569" column="47" selection-start-line="569" selection-start-column="47" selection-end-line="569" selection-end-column="59" />
-          <folding>
-            <element signature="e#24#63#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="489">
+          <caret line="545" column="34" selection-start-line="545" selection-start-column="34" selection-end-line="545" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WeRoBot/check_price_update.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="74" column="22" selection-start-line="74" selection-start-column="22" selection-end-line="74" selection-end-column="22" />
         </state>
       </provider>
     </entry>
@@ -574,31 +507,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WeRoBot/logs/access.log">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WeRoBot/logs/data_update.log">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WeRoBot/logs/error.log">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WeRoBot/logs/price_data_update.log">
+    <entry file="file://$PROJECT_DIR$/WeRoBot/logs/uwsgi.log">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -614,7 +523,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WeRoBot/logs/uwsgi.log">
+    <entry file="file://$PROJECT_DIR$/WeRoBot/logs/price_data_update.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WeRoBot/logs/error.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WeRoBot/logs/data_update.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WeRoBot/logs/access.log">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
